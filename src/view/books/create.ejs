@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Form</title>
+</head>
+<body>
+    <h1>Create Form</h1>
+    <form action="/admin/books/create" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Tên sách:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="publisher_id">Nhà xuất bản:</label>
+            <input type="number" id="publisher_id" name="publisher_id" required>
+        </div>
+        <div>
+            <label for="author_id">Tác giả:</label>
+            <input type="text" id="author_id" name="author_id" required>
+        </div>
+        <div>
+            <label for="category_id">Thể loại:</label>
+            <input type="text" id="category_id" name="category_id" required>
+        </div>
+        <div>
+            <label for="price">Giá sách:</label>
+            <input type="number" id="price" name="price" required>
+        </div>
+        <div>
+            <label for="publication_year">Năm xuất bản:</label>
+            <input type="number" id="publication_year" name="publication_year" required>
+        </div>
+        <div>
+            <label for="number_of_publication">Số lượng xuất bản:</label>
+            <input type="text" id="number_of_publication" name="number_of_publication" required>
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Form</title>
+</head>
+<body>
+    <h1>Edit Form</h1>
+    <form action="/admin/books/<%= book.id %>/edit" method="POST">
+        <div>
+            <label for="name">Book Name</label>
+            <input type="text" name="name" id="name" value="<%= book.name %>" required>
+        </div>
+        <div>
+            <label for="publisher_id">Publisher</label>
+            <input type="number" name="publisher_id" id="publisher_id" value="<%= book.publisher_id %>" required>
+        </div>
+        <div>
+            <label for="author_id">Author</label>
+            <input type="number" name="author_id" id="author_id" value="<%= book.author_id %>" required>
+        </div>
+        <div>
+            <label for="category_id">Category</label>
+            <input type="number" name="category_id" id="category_id" value="<%= book.category_id %>" required>
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" value="<%= book.price %>" required>
+        </div>
+        <div>
+            <label for="publication_year">Publication Year</label>
+            <input type="number" name="publication_year" id="publication_year" value="<%= book.publication_year %>" required>
+        </div>
+        <div>
+            <label for="number_of_publication">Number of Publication</label>
+            <input type="number" name="number_of_publication" id="number_of_publication" value="<%= book.number_of_publication %>" required>
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
+    
+</body>
+</html>

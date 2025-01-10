@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3000;
 
 const router = require('./src/routers/app.router')
+const DBConnect = require('./src/model/db')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
@@ -18,7 +19,7 @@ app.set('view engine', 'ejs');
 
 //router
 app.use(router)
-
+DBConnect.connect();
 
 app.listen(PORT, ()=>{
     console.log(`Server running at ${PORT}`);

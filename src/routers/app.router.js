@@ -3,6 +3,8 @@ const router = express.Router()
 
 const homeController = require('../controller/homeController');
 const authController = require('../controller/authController');
+const studentController = require('../controller/bookController');
+const bookController = require('../controller/bookController');
 
 router.get('/home', (req, res)=>{
     homeController.showHomePage(req, res)
@@ -22,5 +24,29 @@ router.post('/register', (req, res)=>{
     authController.register(req, res);
 })
 
+router.get('/admin/books', (req, res)=>{
+    bookController.showlistBook(req, res);
+})
+
+router.get('/admin/books/:id/delete', (req, res)=>{
+    bookController.deleteBook(req, res);
+})
+router.get('/admin/books/create', (req, res)=>{
+    bookController.showCreateForm(req, res);
+})
+router.post('/admin/books/create', (req, res)=>{
+    bookController.createBook(req, res);
+})
+
+router.get('/admin/books/:id/edit', (req, res) => {
+    bookController.showEditForm(req, res);
+});
+
+router.post('/admin/books/:id/edit', (req, res) => {
+    bookController.editBook(req, res);
+});
+router.get('/admin/books/:id/detail', (req, res) => {
+    bookController.showDetailForm(req, res);
+});
 
 module.exports = router;

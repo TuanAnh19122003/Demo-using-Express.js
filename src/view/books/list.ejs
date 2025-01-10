@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+</head>
+<body>
+    <div class="title">
+        <h1>Book List</h1>
+        <a href="/admin/books/create">Thêm mới</a>
+    </div>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên sách</th>
+                <th>Giá</th>
+                <th>Tác giả</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(item => { %>
+                <tr>
+                    <td><%= item.id %></td>
+                    <td><%= item.book_name %></td>
+                    <td><%= item.price %></td>
+                    <td><%= item.author_name %></td>
+                    <td>
+                        <a href="/admin/books/<%= item.id %>/edit">Edit</a> | 
+                        <a href="/admin/books/<%= item.id %>/delete">Delete</a> |
+                        <a href="/admin/books/<%= item.id %>/detail">Detail</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
