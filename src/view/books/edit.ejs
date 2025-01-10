@@ -4,40 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Form</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Edit Form</h1>
-    <form action="/admin/books/<%= book.id %>/edit" method="POST">
-        <div>
-            <label for="name">Book Name</label>
-            <input type="text" name="name" id="name" value="<%= book.name %>" required>
+    <div class="container mt-5">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h1 class="mb-0">Edit Form</h1>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
         </div>
-        <div>
-            <label for="publisher_id">Publisher</label>
-            <input type="number" name="publisher_id" id="publisher_id" value="<%= book.publisher_id %>" required>
-        </div>
-        <div>
-            <label for="author_id">Author</label>
-            <input type="number" name="author_id" id="author_id" value="<%= book.author_id %>" required>
-        </div>
-        <div>
-            <label for="category_id">Category</label>
-            <input type="number" name="category_id" id="category_id" value="<%= book.category_id %>" required>
-        </div>
-        <div>
-            <label for="price">Price</label>
-            <input type="number" name="price" id="price" value="<%= book.price %>" required>
-        </div>
-        <div>
-            <label for="publication_year">Publication Year</label>
-            <input type="number" name="publication_year" id="publication_year" value="<%= book.publication_year %>" required>
-        </div>
-        <div>
-            <label for="number_of_publication">Number of Publication</label>
-            <input type="number" name="number_of_publication" id="number_of_publication" value="<%= book.number_of_publication %>" required>
-        </div>
-        <button type="submit">Save Changes</button>
-    </form>
+        
+        <form action="/admin/books/<%= book.id %>/edit" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Book Name</label>
+                <input type="text" class="form-control" name="name" id="name" value="<%= book.name %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="publisher_id" class="form-label">Publisher</label>
+                <input type="number" class="form-control" name="publisher_id" id="publisher_id" value="<%= book.publisher_id %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="author_id" class="form-label">Author</label>
+                <input type="number" class="form-control" name="author_id" id="author_id" value="<%= book.author_id %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="category_id" class="form-label">Category</label>
+                <input type="number" class="form-control" name="category_id" id="category_id" value="<%= book.category_id %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" name="price" id="price" value="<%= book.price %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="publication_year" class="form-label">Publication Year</label>
+                <input type="number" class="form-control" name="publication_year" id="publication_year" value="<%= book.publication_year %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="number_of_publication" class="form-label">Number of Publication</label>
+                <input type="number" class="form-control" name="number_of_publication" id="number_of_publication" value="<%= book.number_of_publication %>" required>
+            </div>
+            <dic class="mb-3">
+                <button type="submit" class="btn btn-warning">Save Changes</button>
+            </dic>
+        </form>
+    </div>
     
 </body>
 </html>
