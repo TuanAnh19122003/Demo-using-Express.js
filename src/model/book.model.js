@@ -10,10 +10,11 @@ class BookModel{
 
     async getAllBooks(){
         const sql = `
-            select book.*, book.name as book_name, author.name as author_name
-            from book
+            select book.*, book.name as book_name,author.name as author_name, publisher.name as publisher_name, category.name as category_name
+            from book	
             inner join author on book.author_id = author.id
-            order by book.id;    
+            inner join publisher on book.publisher_id = publisher.id
+            inner join category on book.category_id = category.id;   
         `;
         const [results] = await (await this.connection).query(sql);
         return results;
@@ -44,10 +45,32 @@ class BookModel{
         const [result] = await (await this.connection).query(sql, [id]);
         return result[0];
     }
-    async updateBook(id, bookData) {
+    async getAllAuthor(req, res){
+        const sql = 'SELECT * FROM author';
+        const [results] = await (await this.connection).query(sql);
+        return results;
+    }
+    async getAllPublisher(req, res){
+        const sql = 'SELECT * FROM publisher';
+        const [results] = await (await this.connection).query(sql);
+        return results;
+    }
+    async getAllCategory(req, res){
+        const sql = 'SELECT * FROM category';
+        const [results] = await (await this.connection).query(sql);
+        return results;
+    }
+    async editBook(id, bookData) {
         const sql = `
             UPDATE book
-            SET name = ?, publisher_id = ?, author_id = ?, category_id = ?, price = ?, publication_year = ?, number_of_publication = ?
+            SET 
+                name = ?, 
+                publisher_id = ?, 
+                author_id = ?, 
+                category_id = ?, 
+                price = ?, 
+                publication_year = ?, 
+                number_of_publication = ?
             WHERE id = ?;
         `;
         await (await this.connection).query(sql, [

@@ -9,6 +9,15 @@ class bookService{
     async getBooks(){
         return await this.bookModel.getAllBooks();
     }
+    async getAuthors(){
+        return await this.bookModel.getAllAuthor();
+    }
+    async getCategories(){
+        return await this.bookModel.getAllCategory();
+    }
+    async getPublishers(){
+        return await this.bookModel.getAllPublisher();
+    }
     async deleteBooksById(req, res){
         const id = req.params.id;
         // console.log(id);
@@ -30,8 +39,8 @@ class bookService{
     async getBookById(id) {
         return await this.bookModel.getBookById(id);
     }
-    async updateBook(id, bookData) {
-        await this.bookModel.updateBook(id, bookData);
+    async editBook(id, bookData) {
+        await this.bookModel.editBook(id, bookData);
     }
 
 }

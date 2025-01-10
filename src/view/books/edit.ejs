@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Form</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container mt-5">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h1 class="mb-0">Edit Form</h1>
-            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back();">
+                <i class="fa fa-arrow-left"></i> Back
+            </button>
         </div>
         
         <form action="/admin/books/<%= book.id %>/edit" method="POST">
@@ -18,30 +21,58 @@
                 <label for="name" class="form-label">Book Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="<%= book.name %>" required>
             </div>
+
             <div class="mb-3">
-                <label for="publisher_id" class="form-label">Publisher</label>
-                <input type="number" class="form-control" name="publisher_id" id="publisher_id" value="<%= book.publisher_id %>" required>
+                <label for="publisher_id" class="form-label">Publisher:</label>
+                <select class="form-control" name="publisher_id" id="publisher_id" required>
+                    <option value="" disabled selected> Select a Publisher </option>
+                    <% publishers.forEach(publisher =>{ %>
+                        <option value="<%= publisher.id %>" <%= publisher.id === book.publisher_id? 'selected' : '' %>>
+                            <%= publisher.name %>
+                        </option>
+                    <% }) %>
+                </select>
             </div>
+            
             <div class="mb-3">
-                <label for="author_id" class="form-label">Author</label>
-                <input type="number" class="form-control" name="author_id" id="author_id" value="<%= book.author_id %>" required>
+                <label for="author_id" class="form-label">Author:</label>
+                <select class="form-select" name="author_id" id="author_id" required>
+                    <option value="" disabled selected> Select a Author </option>
+                    <% authors.forEach(author =>{ %>
+                        <option value="<%= author.id %>" <%= author.id === book.author_id? 'selected' : '' %>>
+                            <%= author.name %>
+                        </option>
+                    <% }) %>
+                </select>
             </div>
+            
             <div class="mb-3">
-                <label for="category_id" class="form-label">Category</label>
-                <input type="number" class="form-control" name="category_id" id="category_id" value="<%= book.category_id %>" required>
+                <label for="category_id" class="form-label">Category:</label>
+                <select class="form-select" name="category_id" id="category_id" required>
+                    <option value="" disabled selected> Select a Categry </option>
+                    <% categories.forEach(category =>{ %>
+                        <option value="<%= category.id %>" <%= category.id === book.category_id? 'selected' : '' %>>
+                            <%= category.name %>
+                        </option>
+                    <% }) %>
+                </select>
             </div>
+            
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" name="price" id="price" value="<%= book.price %>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="publication_year" class="form-label">Publication Year</label>
                 <input type="number" class="form-control" name="publication_year" id="publication_year" value="<%= book.publication_year %>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="number_of_publication" class="form-label">Number of Publication</label>
                 <input type="number" class="form-control" name="number_of_publication" id="number_of_publication" value="<%= book.number_of_publication %>" required>
             </div>
+            
             <dic class="mb-3">
                 <button type="submit" class="btn btn-warning">Save Changes</button>
             </dic>

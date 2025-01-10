@@ -15,16 +15,16 @@
                 <input type="text" class="form-control" name="name" id="name" value="<%= book.name %>" readonly>
             </div>
             <div class="mb-3">
-                <label for="publisher_id" class="form-label">Publisher</label>
-                <input type="number" class="form-control" name="publisher_id" id="publisher_id" value="<%= book.publisher_id %>" readonly>
+                <label for="publisher_id" class="form-label">Publisher:</label>
+                <input type="text" class="form-control" id="publisher_name" value="<%= publisher ? publisher.name : 'Unknown' %>" readonly>
             </div>
             <div class="mb-3">
-                <label for="author_id" class="form-label">Author</label>
-                <input type="number" class="form-control" name="author_id" id="author_id" value="<%= book.author_id %>" readonly>
+                <label for="author_id" class="form-label">Author:</label>
+                <input type="text" class="form-control" id="author_name" value="<%= author ? author.name : 'Unknown' %>" readonly>
             </div>
             <div class="mb-3">
-                <label for="category_id" class="form-label">Category</label>
-                <input type="number" class="form-control" name="category_id" id="category_id" value="<%= book.category_id %>" readonly>
+                <label for="category_id" class="form-label">Category:</label>
+                <input type="text" class="form-control" id="category_name" value="<%= category ? category.name : 'Unknown' %>" readonly>
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>

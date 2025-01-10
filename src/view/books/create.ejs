@@ -17,30 +17,52 @@
                 <label for="name" class="form-label">Book Name:</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
+
             <div class="mb-3">
                 <label for="publisher_id" class="form-label">Publisher:</label>
-                <input type="number" class="form-control" id="publisher_id" name="publisher_id" required>
+                <select class="form-control" name="publisher_id" id="publisher_id" required>
+                    <option value="" disabled selected> Select a Publisher </option>
+                    <% publishers.forEach(publisher =>{ %>
+                        <option value="<%= publisher.id %>"><%= publisher.name %></option>
+                    <% }) %>
+                </select>
             </div>
+            
             <div class="mb-3">
                 <label for="author_id" class="form-label">Author:</label>
-                <input type="text" class="form-control" id="author_id" name="author_id" required>
+                <select class="form-select" name="author_id" id="author_id" required>
+                    <option value="" disabled selected> Select a Author </option>
+                    <% authors.forEach(author =>{ %>
+                        <option value="<%= author.id %>"><%= author.name %></option>
+                    <% }) %>
+                </select>
             </div>
+            
             <div class="mb-3">
                 <label for="category_id" class="form-label">Category:</label>
-                <input type="text" class="form-control" id="category_id" name="category_id" required>
+                <select class="form-select" name="category_id" id="category_id" required>
+                    <option value="" disabled selected> Select a Categry </option>
+                    <% categories.forEach(category =>{ %>
+                        <option value="<%= category.id %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
             </div>
+            
             <div class="mb-3">
                 <label for="price" class="form-label">Price:</label>
                 <input type="number" class="form-control" id="price" name="price" required>
             </div>
+            
             <div class="mb-3">
                 <label for="publication_year" class="form-label">Publication Year:</label>
                 <input type="number" class="form-control" id="publication_year" name="publication_year" required>
             </div>
+            
             <div class="mb-3">
                 <label for="number_of_publication" class="form-label">Number of Publication:</label>
                 <input type="text" class="form-control" id="number_of_publication" name="number_of_publication" required>
             </div>
+            
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
             </div>
