@@ -1,4 +1,3 @@
-const { name } = require('ejs');
 const DBConnect = require('./db');
 
 class BookModel{

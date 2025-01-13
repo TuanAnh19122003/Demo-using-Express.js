@@ -1,80 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Form</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-</head>
+    <%- include('../layout/head.ejs', { pageTitle: 'Thêm sách' }) %>
 <body>
-    <div class="container mt-5">
-        <div class="d-flex align-items-center justify-content-between mb-4"> 
-            <h1 class="mb-4">Create Form</h1>
-            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
+    <div class="container mb-5">
+        <%- include('../layout/navbar.ejs') %>
+        
+        <div class="card mt-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h1 class="mb-0">Create</h1>
+                <a class="btn btn-secondary" onclick="window.history.back();">
+                    <i class="fa fa-arrow-left"></i> Back
+                </a>
+            </div>
+            
+            <div class="card-body">
+                <form action="/admin/books/create" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Book Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên sách" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="publisher_id" class="form-label">Publisher:</label>
+                        <select class="form-control" name="publisher_id" id="publisher_id" required>
+                            <option value="" disabled selected>Chọn nhà xuất bản</option>
+                            <% publishers.forEach(publisher => { %>
+                                <option value="<%= publisher.id %>"><%= publisher.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="author_id" class="form-label">Author:</label>
+                        <select class="form-control" name="author_id" id="author_id" required>
+                            <option value="" disabled selected>Chọn tác giả</option>
+                            <% authors.forEach(author => { %>
+                                <option value="<%= author.id %>"><%= author.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category_id" class="form-label">Category:</label>
+                        <select class="form-control" name="category_id" id="category_id" required>
+                            <option value="" disabled selected>Chọn danh mục</option>
+                            <% categories.forEach(category => { %>
+                                <option value="<%= category.id %>"><%= category.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá sách" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image:</label>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="publication_year" class="form-label">Publication Year:</label>
+                        <select class="form-control" id="publication_year" name="publication_year" required></select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="number_of_publication" class="form-label">Number of Publication:</label>
+                        <input type="text" class="form-control" id="number_of_publication" name="number_of_publication" placeholder="Nhập số lần xuất bản" required>
+                    </div>
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success">Create</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <form action="/admin/books/create" method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label">Book Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="publisher_id" class="form-label">Publisher:</label>
-                <select class="form-control" name="publisher_id" id="publisher_id" required>
-                    <option value="" disabled selected> Select a Publisher </option>
-                    <% publishers.forEach(publisher =>{ %>
-                        <option value="<%= publisher.id %>"><%= publisher.name %></option>
-                    <% }) %>
-                </select>
-            </div>
-            
-            <div class="mb-3">
-                <label for="author_id" class="form-label">Author:</label>
-                <select class="form-select" name="author_id" id="author_id" required>
-                    <option value="" disabled selected> Select a Author </option>
-                    <% authors.forEach(author =>{ %>
-                        <option value="<%= author.id %>"><%= author.name %></option>
-                    <% }) %>
-                </select>
-            </div>
-            
-            <div class="mb-3">
-                <label for="category_id" class="form-label">Category:</label>
-                <select class="form-select" name="category_id" id="category_id" required>
-                    <option value="" disabled selected> Select a Categry </option>
-                    <% categories.forEach(category =>{ %>
-                        <option value="<%= category.id %>"><%= category.name %></option>
-                    <% }) %>
-                </select>
-            </div>
-            
-            <div class="mb-3">
-                <label for="price" class="form-label">Price:</label>
-                <input type="number" class="form-control" id="price" name="price" required>
-            </div>
-            
-            <div class="mb-3">
-                <label for="image" class="form-label">Image:</label>
-                <input type="file" class="form-control" id="image" name="image" required>
-            </div>
-            
-
-            <div class="mb-3">
-                <label for="publication_year" class="form-label">Publication Year:</label>
-                <select class="form-control">
-                    <option>2025</option>
-                </select>
-            </div>
-            
-            <div class="mb-3">
-                <label for="number_of_publication" class="form-label">Number of Publication:</label>
-                <input type="text" class="form-control" id="number_of_publication" name="number_of_publication" required>
-            </div>
-            
-            <div class="mb-3">
-                <button type="submit" class="btn btn-success">Create</button>
-            </div>
-        </form>
     </div>
+
+    <script src="/js/year.js"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@ class DBConnect{
                 port: this.port,
                 password: this.password
             });
-            console.log('Connect to DB')
+            console.log('Connect to DB');
         }catch(e){
             console.log(e);
             throw new Error("Can't connect to db");

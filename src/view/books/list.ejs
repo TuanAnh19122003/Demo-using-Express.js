@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../layout/head.ejs', {pageTitle: 'Quan ly Sach'}) %>
+    <%- include('../layout/head.ejs', {pageTitle: 'Quản lý sách'}) %>
 <body>
     <div class="container mb-5">
         <%- include('../layout/navbar.ejs') %>
@@ -11,9 +11,10 @@
                     <i class="fa-solid fa-circle-plus"></i> New
                 </a>
             </div>
+            
             <div class="card-body">
                 <table class="table table-bordered table-striped">
-                    <thead>
+                    <thead class="table-dark">
                         <tr>
                             <th>ID</th>
                             <th>Book Name</th>
@@ -28,7 +29,8 @@
                             <tr>
                                 <td><%= item.id %></td>
                                 <td><%= item.book_name %></td>
-                                <td><%= item.price %></td>
+                                <td><%= (Number(item.price) || 0).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' đ' %></td>
+
                                 <td><%= item.publisher_name %></td>
                                 <td><%= item.author_name %></td>
                                 <td>
