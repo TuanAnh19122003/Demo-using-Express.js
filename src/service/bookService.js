@@ -7,9 +7,10 @@ class bookService{
     constructor(){
         this.bookModel = bookModel;
     }
-    async getBooks(){
-        return await this.bookModel.getAllBooks();
+    async getBooks(page, limit) {
+        return await this.bookModel.getAllBooks(page, limit);
     }
+    
     async getAuthors(){
         return await this.bookModel.getAllAuthor();
     }
@@ -66,6 +67,7 @@ class bookService{
                 const image = req.file;
                 const nameFile = image.filename;
                 bookData.image = nameFile;
+                
                 const pathImage = "public/uploads/" + bookUpdate.image;
                 if(bookUpdate.image){
                     await this.unlinkFile(pathImage);

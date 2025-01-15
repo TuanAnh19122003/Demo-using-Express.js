@@ -6,9 +6,16 @@ class bookController{
         this.bookService = bookService;
     }
     async showlistBook(req, res){
-        const books = await this.bookService.getBooks();
+        const page = parseInt(req.query.page) || 1;
+        const limit = 5
+        const {books, totalBooks, totalPages} = await this.bookService.getBooks(page, limit);
         // console.log(books);
-        res.render('books/list', {data: books});
+        res.render('books/list', {
+            data: books,
+            currentPage: page,
+            totalPages: totalPages,
+            totalBooks: totalBooks
+        });
     }
     async deleteBook(req, res){
         try{
