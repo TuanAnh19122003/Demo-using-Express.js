@@ -63,6 +63,7 @@ class bookService{
             const {id} = req.params;
             const bookUpdate = await this.getBookById(id);
             const bookData = req.body;
+
             if(req.file){
                 const image = req.file;
                 const nameFile = image.filename;
@@ -76,6 +77,7 @@ class bookService{
             }else{
                 bookData.image = bookUpdate.image;
             }
+            
             await this.bookModel.editBook(id, bookData);
 
         } catch (error) {
