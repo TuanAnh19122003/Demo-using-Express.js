@@ -38,6 +38,17 @@
                         <label for="price" class="form-label">Price</label>
                         <input type="number" class="form-control" name="price" id="price" value="<%= book.price %>" readonly>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image:</label>
+                        <br>
+                        <img 
+                            src="/uploads/<%= book.image %>" 
+                            class="img-thumbnail" 
+                            alt="Book Image" 
+                            style="max-width: 200px; height: auto;"
+                        >
+                    </div>
                     
                     <div class="mb-3">
                         <label for="publication_year" class="form-label">Publication Year</label>

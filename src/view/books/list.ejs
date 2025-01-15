@@ -14,10 +14,11 @@
             
             <div class="card-body">
                 <table class="table table-bordered table-striped">
-                    <thead class="table-dark">
+                    <thead class="table-primary">
                         <tr>
                             <th>ID</th>
                             <th>Book Name</th>
+                            <th>Image</th>
                             <th>Price</th>
                             <th>Publisher</th>
                             <th>Author</th>
@@ -29,11 +30,18 @@
                             <tr>
                                 <td><%= item.id %></td>
                                 <td><%= item.book_name %></td>
+                                <td>
+                                    <img src="/uploads/<%= item.image %>" 
+                                        alt="No Image" 
+                                        class="img-thumbnail"
+                                        style="width: 100px; height: 100px;" 
+                                        data-bs-toggle="tooltip" 
+                                    >
+                                </td>
                                 <td><%= (Number(item.price) || 0).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' đ' %></td>
-
                                 <td><%= item.publisher_name %></td>
                                 <td><%= item.author_name %></td>
-                                <td>
+                                <td class="d-flex flex-column gap-2">
                                     <a href="/admin/books/<%= item.id %>/edit" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>

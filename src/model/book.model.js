@@ -13,7 +13,8 @@ class BookModel{
             from book	
             inner join author on book.author_id = author.id
             inner join publisher on book.publisher_id = publisher.id
-            inner join category on book.category_id = category.id;   
+            inner join category on book.category_id = category.id
+            order by id ASC;   
         `;
         const [results] = await (await this.connection).query(sql);
         return results;
@@ -22,21 +23,23 @@ class BookModel{
         const sql = 'DELETE FROM book WHERE id = ?';
         await (await this.connection).query(sql, [id]);
     }
-    async addBook(book){
+    async addBook(data){
         const sql = 
         `
-            insert into book (name, publisher_id, author_id, category_id, price, publication_year, number_of_publication)
-            value (?, ?, ?, ?, ?, ?, ?);
+            insert into book (name, publisher_id, author_id, category_id, price, image, publication_year, number_of_publication)
+            value (?, ?, ?, ?, ?, ?, ?, ?);
         `;
-        await (await this.connection).query(sql, [
-            book.name,
-            book.publisher_id,
-            book.author_id,
-            book.category_id,
-            book.price,
-            book.publication_year,
-            book.number_of_publication
-        ]);
+        const {name, publisher_id, author_id, category_id, price, image, publication_year, number_of_publication} = data
+        return await (await this.connection).query(sql, [
+            name,
+            publisher_id,
+            author_id,
+            category_id,
+            price,
+            image,
+            publication_year,
+            number_of_publication
+        ]);   
     }
 
     async getBookById(id) {
@@ -67,21 +70,24 @@ class BookModel{
                 publisher_id = ?, 
                 author_id = ?, 
                 category_id = ?, 
-                price = ?, 
+                price = ?,
+                image = ?, 
                 publication_year = ?, 
                 number_of_publication = ?
             WHERE id = ?;
         `;
-        await (await this.connection).query(sql, [
-            bookData.name,
-            bookData.publisher_id,
-            bookData.author_id,
-            bookData.category_id,
-            bookData.price,
-            bookData.publication_year,
-            bookData.number_of_publication,
+        const {name, publisher_id, author_id, category_id, price, image, publication_year, number_of_publication} = bookData
+        return await (await this.connection).query(sql, [
+            name,
+            publisher_id,
+            author_id,
+            category_id,
+            price,
+            image,
+            publication_year,
+            number_of_publication,
             id
-        ]);
+        ]);   
     }
     
 }

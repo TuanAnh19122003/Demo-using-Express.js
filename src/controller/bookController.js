@@ -52,17 +52,7 @@ class bookController{
     }
     async editBook(req, res) {
         try {
-            const bookId = req.params.id;
-            const editBook = {
-                name: req.body.name,
-                publisher_id: req.body.publisher_id,
-                author_id: req.body.author_id,
-                category_id: req.body.category_id,
-                price: req.body.price,
-                publication_year: req.body.publication_year,
-                number_of_publication: req.body.number_of_publication
-            };
-            await this.bookService.editBook(bookId, editBook);
+            await this.bookService.editBook(req, res);
             res.redirect('/admin/books');
         } catch (error) {
             console.log(error);
